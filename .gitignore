@@ -21,3 +21,5 @@ gmall0218-realtime/src/main/java/
 gmall0218-realtime/src/test/
 gmall0218-realtime/target/generated-sources/
 gmall0218-realtime/target/test-classes/
+gmall0218-publisher/src/main/resources/static/
+gmall0218-publisher/src/main/resources/templates/
