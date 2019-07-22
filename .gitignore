@@ -7,3 +7,17 @@
 *.iml
 out
 gen
+gmall0218-common/src/main/resources/
+gmall0218-common/src/test/
+gmall0218-common/target/generated-sources/
+gmall0218-common/target/test-classes/
+gmall0218-logger/src/main/resources/static/
+gmall0218-logger/src/main/resources/templates/
+gmall0218-mock/src/main/resources/
+gmall0218-mock/src/test/
+gmall0218-mock/target/generated-sources/
+gmall0218-mock/target/test-classes/
+gmall0218-realtime/src/main/java/
+gmall0218-realtime/src/test/
+gmall0218-realtime/target/generated-sources/
+gmall0218-realtime/target/test-classes/
