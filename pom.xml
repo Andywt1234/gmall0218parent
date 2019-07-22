@@ -20,6 +20,7 @@
         <module>gmall0218-logger</module>
         <module>gmall0218-realtime</module>
         <module>gmall0218-publisher</module>
+        <module>gmall0218-canal</module>
     </modules>
 
     <properties>
