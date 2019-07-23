@@ -35,7 +35,6 @@ public class LoggerController {
         } else {
             kafkaTemplate.send(GmallConstant.KAFKA_TOPIC_EVENT, jsonString);
         }
-
         return "success";
     }
 
