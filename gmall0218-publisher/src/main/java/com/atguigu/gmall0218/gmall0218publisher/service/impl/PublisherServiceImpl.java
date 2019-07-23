@@ -24,15 +24,15 @@ public class PublisherServiceImpl implements PublisherService {
 
     @Override
     public Map getDauHour(String date) {
-        List<Map> dauHour = dauMapper.getDauHour(date);
-        //把List<Map>转换为Map结构
-        
-        Map dauHourMap=new HashMap();
-        for (Map map : dauHour) {
-
-            
+        List<Map> dauHourList = dauMapper.getDauHour(date);
+        //把 List<Map> 转换成  Map
+        Map duaHourMap=new HashMap();
+        for (Map map : dauHourList) {
+            String loghour =(String ) map.get("LOGHOUR");
+            Long ct =(Long ) map.get("CT");
+            duaHourMap.put(loghour,ct);
         }
-        return dauHourMap;
+        return duaHourMap;
         
     }
 }

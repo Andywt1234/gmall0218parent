@@ -20,8 +20,6 @@ public class CanalHanlder {
         this.eventType = eventType;
         this.rowDataList = rowDataList;
     }
-
-
     public void hadle(){
         if(tableName.equals("order_info")&& eventType== CanalEntry.EventType.INSERT){//下单操作
             for (CanalEntry.RowData rowData : rowDataList) {//遍历行集
@@ -32,7 +30,6 @@ public class CanalHanlder {
                     System.out.println(column.getName()+"|||||||||"+column.getValue());
                     jsonObject.put(column.getName(),column.getValue());
                 }
-
                 MyKafkaSender.send(GmallConstant.KAFKA_TOPIC_ORDER,jsonObject.toJSONString());
             }
         }

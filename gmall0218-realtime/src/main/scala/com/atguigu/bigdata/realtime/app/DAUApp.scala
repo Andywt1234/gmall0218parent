@@ -1,4 +1,4 @@
-package com.atguigu.bigdata.realtime
+package com.atguigu.bigdata.realtime.app
 
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -14,7 +14,8 @@ import org.apache.spark.rdd.RDD
 import org.apache.spark.streaming.dstream.DStream
 import org.apache.spark.streaming.{Seconds, StreamingContext}
 import redis.clients.jedis.Jedis
-import org.apache.phoenix.spark._
+import  org.apache.phoenix.spark._
+
 /**
   * Created by wt on 2019-07-20 11:18
   */
@@ -35,7 +36,7 @@ object DAUApp {
       startUpLog.logHour = dateTimeArray(1)
       startUpLog
     })
-    // TODO: 2.缓存，重复使用 
+    // TODO: 2.缓存，重复使用
     startUpLongDstream.cache()
     //打印测试
     /*startUpLongDstream.foreachRDD(rdd=>{
