@@ -20,18 +20,26 @@ public class CanalHanlder {
         this.eventType = eventType;
         this.rowDataList = rowDataList;
     }
-    public void hadle(){
-        if(tableName.equals("order_info")&& eventType== CanalEntry.EventType.INSERT){//下单操作
-            for (CanalEntry.RowData rowData : rowDataList) {//遍历行集
+    public void hadle() {
+        if (tableName.equals("order_info") && eventType == CanalEntry.EventType.INSERT) {//下单操作
+            sendKafka(GmallConstant.KAFKA_TOPIC_ORDER);
+        } else if (tableName.equals("order_detail") && eventType == CanalEntry.EventType.INSERT) {
+            sendKafka(GmallConstant.KAFKA_TOPIC_ORDER_DETAIL);
+        } else if (tableName.equals("user_info") && (eventType == CanalEntry.EventType.INSERT || eventType == CanalEntry.EventType.UPDATE)) {
+            sendKafka(GmallConstant.KAFKA_TOPIC_USER);
+        }
+    }
 
-                List<CanalEntry.Column> afterColumnsList = rowData.getAfterColumnsList();//修改后的列集
-                JSONObject jsonObject = new JSONObject();
-                for (CanalEntry.Column column : afterColumnsList) {
-                    System.out.println(column.getName()+"|||||||||"+column.getValue());
-                    jsonObject.put(column.getName(),column.getValue());
-                }
-                MyKafkaSender.send(GmallConstant.KAFKA_TOPIC_ORDER,jsonObject.toJSONString());
+    private void sendKafka(String topic) {
+        for (CanalEntry.RowData rowData : rowDataList) {//遍历行集
+
+            List<CanalEntry.Column> afterColumnsList = rowData.getAfterColumnsList();//修改后的列集
+            JSONObject jsonObject = new JSONObject();
+            for (CanalEntry.Column column : afterColumnsList) {
+                System.out.println(column.getName() + "|||||||||" + column.getValue());
+                jsonObject.put(column.getName(), column.getValue());
             }
+            MyKafkaSender.send(topic, jsonObject.toJSONString());
         }
     }
 }

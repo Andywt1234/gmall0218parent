@@ -62,10 +62,6 @@ object OrderApp {
 
     ssc.start()
     ssc.awaitTermination()
-
-
-
-
   }
 
 }
